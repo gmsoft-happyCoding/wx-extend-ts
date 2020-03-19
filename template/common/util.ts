@@ -12,7 +12,7 @@ type Conf = any;
 function createAPI(baseURL?: string) {
   return function(conf: Conf) {
     conf = conf || {};
-    return instance(
+    return instance.request(
       Object.assign(
         {},
         {
