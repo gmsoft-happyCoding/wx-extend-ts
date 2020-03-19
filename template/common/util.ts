@@ -4,7 +4,7 @@ import WxRequest from "wx-extend/src/assets/plugins/wx-request/lib/index";
 import { WithPathOpts } from "./Opts.d";
 
 const instance = new WxRequest({
-  headers: { "content-type": "application/json" },
+  header: { "Content-type": "application/json" },
 });
 
 type Conf = any;
