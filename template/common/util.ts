@@ -1,14 +1,13 @@
 /* eslint-disable */
 // @ts-ignore
 import WxRequest from "wx-extend/src/assets/plugins/wx-request/lib/index";
-import { defaultsDeep } from "lodash";
 import { WithPathOpts } from "./Opts.d";
 
 const instance = new WxRequest({
   headers: { "content-type": "application/json" },
 });
 
-type Conf = AxiosRequestConfig & { opts?: Partial<WithPathOpts> };
+type Conf = any;
 
 function createAPI(baseURL?: string) {
   return function(conf: Conf) {
@@ -48,30 +47,30 @@ interface InterceptorErrorHandler {
   (error: any): any;
 }
 
+// 请求拦截器
 function useRequestInterceptor(
-  beforeRequestHandler?: InterceptorHandler<AxiosRequestConfig>,
+  beforeRequestHandler?: InterceptorHandler<any>,
   errorHandler?: InterceptorErrorHandler
 ): number {
   return instance.interceptors.request.use(beforeRequestHandler, errorHandler);
 }
 
+// 相应拦截器
 function useResponseInterceptor(
-  successHandler?: InterceptorHandler<AxiosResponse>,
+  successHandler?: InterceptorHandler<any>,
   errorHandler?: InterceptorErrorHandler
 ): number {
   return instance.interceptors.response.use(successHandler, errorHandler);
 }
 
+// 移除请求拦截器
 function ejectRequestInterceptor(interceptorId: number) {
   instance.interceptors.request.eject(interceptorId);
 }
 
+// 移除相应拦截器
 function ejectResponseInterceptor(interceptorId: number) {
   instance.interceptors.response.eject(interceptorId);
-}
-
-function mergeDefaults(...defaults: AxiosRequestConfig[]) {
-  return (instance.defaults = defaultsDeep(instance.defaults, ...defaults));
 }
 
 export {
@@ -81,5 +80,4 @@ export {
   useResponseInterceptor,
   ejectRequestInterceptor,
   ejectResponseInterceptor,
-  mergeDefaults,
 };
