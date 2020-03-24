@@ -1,10 +1,11 @@
 /* eslint-disable */
+import Taro from '@tarojs/taro';
 // @ts-ignore
 import WxRequest from "wx-extend/src/assets/plugins/wx-request/lib/index";
 import { WithPathOpts } from "./Opts.d";
 
 const instance = new WxRequest({
-  header: { "Content-type": "application/json" },
+  header: { "Content-type": "application/json", Taro.getStorageSync('token') },
 });
 
 type Conf = any;
