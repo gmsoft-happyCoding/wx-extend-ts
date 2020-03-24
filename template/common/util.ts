@@ -59,12 +59,12 @@ function useRequestInterceptor(
   response?: InterceptorHandler<any>, // 响应拦截
   errorHandler?: InterceptorErrorHandler // 响应失败
 ): number {
-  return instance.interceptors.use(
-    beforeRequestHandler,
-    requestError,
-    response,
-    errorHandler
-  );
+  return instance.interceptors.use({
+    request: beforeRequestHandler,
+    requestError: requestError,
+    response: response,
+    responseError: errorHandler,
+  });
 }
 
 // 相应拦截器
