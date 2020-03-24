@@ -1,4 +1,5 @@
 /* eslint-disable */
+// @ts-ignore
 import Taro from "@tarojs/taro";
 // @ts-ignore
 import WxRequest from "wx-extend/src/assets/plugins/wx-request/lib/index";
