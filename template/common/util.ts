@@ -67,12 +67,12 @@ function useRequestInterceptor(
 }
 
 // 相应拦截器
-function useResponseInterceptor(
-  successHandler?: InterceptorHandler<any>,
-  errorHandler?: InterceptorErrorHandler
-): number {
-  return instance.interceptors.use(successHandler, errorHandler);
-}
+// function useResponseInterceptor(
+//   successHandler?: InterceptorHandler<any>,
+//   errorHandler?: InterceptorErrorHandler
+// ): number {
+//   return instance.interceptors.use(successHandler, errorHandler);
+// }
 
 // // 移除请求拦截器
 // function ejectRequestInterceptor(interceptorId: number) {
@@ -88,7 +88,7 @@ export {
   createAPI,
   convertRESTAPI,
   useRequestInterceptor,
-  useResponseInterceptor,
+  //  useResponseInterceptor,
   //  ejectRequestInterceptor,
   //  ejectResponseInterceptor,
 };
