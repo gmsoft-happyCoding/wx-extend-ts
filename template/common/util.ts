@@ -53,10 +53,17 @@ interface InterceptorErrorHandler {
 
 // 请求拦截器
 function useRequestInterceptor(
-  beforeRequestHandler?: InterceptorHandler<any>,
-  errorHandler?: InterceptorErrorHandler
+  beforeRequestHandler?: InterceptorHandler<any>, // 请求拦截
+  requestError?: InterceptorHandler<any>, // 请求错误
+  response?: InterceptorHandler<any>, // 响应拦截
+  errorHandler?: InterceptorErrorHandler // 响应失败
 ): number {
-  return instance.interceptors.request.use(beforeRequestHandler, errorHandler);
+  return instance.interceptors.use(
+    beforeRequestHandler,
+    requestError,
+    response,
+    errorHandler
+  );
 }
 
 // 相应拦截器
@@ -64,24 +71,24 @@ function useResponseInterceptor(
   successHandler?: InterceptorHandler<any>,
   errorHandler?: InterceptorErrorHandler
 ): number {
-  return instance.interceptors.response.use(successHandler, errorHandler);
+  return instance.interceptors.use(successHandler, errorHandler);
 }
 
-// 移除请求拦截器
-function ejectRequestInterceptor(interceptorId: number) {
-  instance.interceptors.request.eject(interceptorId);
-}
+// // 移除请求拦截器
+// function ejectRequestInterceptor(interceptorId: number) {
+//   instance.interceptors.request.eject(interceptorId);
+// }
 
-// 移除相应拦截器
-function ejectResponseInterceptor(interceptorId: number) {
-  instance.interceptors.response.eject(interceptorId);
-}
+// // 移除响应拦截器
+// function ejectResponseInterceptor(interceptorId: number) {
+//   instance.interceptors.response.eject(interceptorId);
+// }
 
 export {
   createAPI,
   convertRESTAPI,
   useRequestInterceptor,
   useResponseInterceptor,
-  ejectRequestInterceptor,
-  ejectResponseInterceptor,
+  //  ejectRequestInterceptor,
+  //  ejectResponseInterceptor,
 };
