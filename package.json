@@ -20,7 +20,7 @@
     "url": "git+https://github.com/easy-mock-templates/axios.git"
   },
   "devDependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.21.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "easy-mock-cli": "^0.1.6",
